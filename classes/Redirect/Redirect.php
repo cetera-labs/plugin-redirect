@@ -18,8 +18,8 @@ final class Redirect
              (":" . $_SERVER["SERVER_PORT"]) : "";
         /*$port = ":8080";*/
         $currentUri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
-        $currentOptions = include $_SERVER["DOCUMENT_ROOT"] . "/plugins/redirect/r_options.php";
-        $redirects = include $_SERVER["DOCUMENT_ROOT"] . "/plugins/redirect/r_list_urls.php";
+        $currentOptions = include __DIR__ . "/../../r_options.php";
+        $redirects = include __DIR__ . "/../../r_list_urls.php";
         $urlf = null;
         $urlt = null;
         $r_sc = null;
