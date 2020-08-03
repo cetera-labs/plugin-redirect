@@ -1,0 +1,33 @@
+{
+    "name": "cetera-labs/plugin-redirect",
+    "description": "Редиректы без htaccess",
+    "type": "cetera-cms-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Leonid Chesnokov",
+            "role": "Author"
+        },
+        {
+            "name": "Roman Romanov",
+            "email": "nicodim@mail.ru",
+            "role": "Support"
+        }
+    ],
+    "require": {
+    },
+    
+    "minimum-stability": "dev",
+    
+    "autoload": {
+        "psr-0": { 
+			"Redirect\\": "classes/"
+		}
+    },
+
+    "extra": {
+        "name": "redirect",
+        "title": "Редиректы без htaccess",
+        "description": "Редиректы без htaccess"
+    }
+}

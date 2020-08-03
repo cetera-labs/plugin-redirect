@@ -1,0 +1,92 @@
+<?php
+
+namespace Redirect;
+
+final class Redirect
+{
+    public static function redirect()
+    {
+        if (strtoupper($_SERVER['REQUEST_METHOD']) != "GET" && strtoupper($_SERVER['REQUEST_METHOD']) != "HEAD") {
+            return;
+        }
+        $host = $_SERVER["SERVER_NAME"];
+        $protocol = !empty($_SERVER["HTTPS"])
+        && $_SERVER["HTTPS"] != "off" ? "https" : "http";
+        $port = !empty($_SERVER["SERVER_PORT"])
+         && $_SERVER["SERVER_PORT"] != "80"
+         && $_SERVER["SERVER_PORT"] != "443" ?
+             (":" . $_SERVER["SERVER_PORT"]) : "";
+        /*$port = ":8080";*/
+        $currentUri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+        $currentOptions = include $_SERVER["DOCUMENT_ROOT"] . "/plugins/redirect/r_options.php";
+        $redirects = include $_SERVER["DOCUMENT_ROOT"] . "/plugins/redirect/r_list_urls.php";
+        $urlf = null;
+        $urlt = null;
+        $r_sc = null;
+        $urlwo = null;
+
+        $toProtocol = $currentOptions[0]["ro_pc"];
+        if ($toProtocol == "to_https" && $protocol == "http") {
+            $protocol = "https";
+            $urlwo = $currentUri;
+        } else if ($toProtocol == "to_http" && $protocol == "https") {
+            $protocol = "http";
+            $urlwo = $currentUri;
+        }
+
+        if ($currentOptions[0]["ro_www"] == "on"
+            && substr($_SERVER["SERVER_NAME"], 0, 4) == "www.") {
+            $host = substr($_SERVER["SERVER_NAME"], 4);
+            $urlwo = $currentUri;
+        }
+        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on") {
+            $changed = false;
+            $u = parse_url($currentUri);
+
+            if ($currentOptions[0]["ro_ss"] == "on") {
+                $tmp = basename(rtrim($u["path"], "/"));
+                if (substr($u["path"], -1, 1) != "/" && substr($tmp, -4) != ".php" && substr($tmp, -4) != ".htm" && substr($tmp, -5) != ".html") {
+                    $u["path"] .= "/";
+                    $changed = true;
+                }
+            }
+
+            if ($currentOptions[0]["ro_ms"] == "on") {
+                if (strpos($u["path"], "//") !== false) {
+                    $u["path"] = preg_replace('{/+}s', "/", $u["path"]);
+                    $changed = true;
+                }
+            }
+            if ($changed) {
+                $urlwo = $u["path"];
+                if (!empty($u["query"])) {
+                    $urlwo .= "?" . $u["query"];
+                }
+            }
+            if (!empty($urlwo)) {
+                header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
+                exit;
+            }
+        }
+
+        if ($currentOptions[0]["ro_404"] == "on") {
+            if (http_response_code() == 404) {
+                header('Location: ' . $protocol . "://" . $host . $port . "/", true, 301);
+                exit;
+            }
+        }
+
+        foreach ($redirects as $row => $innerArray) {
+            $urlf = $redirects[$row]["url_from"];
+            $urlt = $redirects[$row]["url_to"];
+            $r_sc = $redirects[$row]["r_code"];
+            if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
+                header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
+                exit;
+            } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
+                header('Location: ' . $urlt, true, $r_sc);
+                exit;
+            }
+        }
+    }
+}

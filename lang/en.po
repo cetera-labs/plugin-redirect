@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Модуль \"Редиректы\"\n"
+"POT-Creation-Date: 2019-07-21 12:25+0300\n"
+"PO-Revision-Date: 2019-07-21 12:25+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _;translate\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: config.php:11
+msgid "Редиректы"
+msgstr "Redirects"
+
+#: ext/Panel.js:14
+msgid "Список редиректов"
+msgstr "Redirect list"
+
+#: ext/Panel.js:17
+msgid "Настройки"
+msgstr "Settings"
+
+#: ext/r_options_grid.js:28 ext/r_options_props.js:28
+msgid "Общие редиректы"
+msgstr "Common redirects"
+
+#: ext/r_options_props.js:34
+msgid "с www на без"
+msgstr "remove www from url"
+
+#: ext/r_options_props.js:39
+msgid "с url без / на /"
+msgstr "add / to url"
+
+#: ext/r_options_props.js:44
+msgid "с // на /"
+msgstr "from // to /"
+
+#: ext/r_options_props.js:49
+msgid "с 404 на главную"
+msgstr "from 404 to title page"
+
+#: ext/r_options_props.js:54
+msgid "с http <-> https"
+msgstr "from http <-> https"
+
+#: ext/r_options_props.js:84 ext/r_urls_props.js:72
+msgid "Ок"
+msgstr "Ok"
+
+#: ext/r_options_props.js:88 ext/r_urls_props.js:76
+msgid "Отмена"
+msgstr "Cancel"
+
+#: ext/r_options_props.js:112
+msgid "Изменить"
+msgstr "Change"
+
+#: ext/r_options_props.js:127 ext/r_urls_props.js:119
+msgid "Сохранение..."
+msgstr "Saving..."
+
+#: ext/r_urls_grid.js:7
+msgid "Редирект со страницы"
+msgstr "Redirect from page"
+
+#: ext/r_urls_grid.js:8
+msgid "Редирект на страницу"
+msgstr "Redirect to page"
+
+#: ext/r_urls_grid.js:9
+msgid "Код"
+msgstr "Code"
+
+#: ext/r_urls_grid.js:49
+msgid "Создать"
+msgstr "Create"
+
+#: ext/r_urls_grid.js:57
+msgid "Редактировать"
+msgstr "Edit"
+
+#: ext/r_urls_grid.js:65
+msgid "Удалить"
+msgstr "Delete"
+
+#: ext/r_urls_grid.js:104
+msgid "Удалить редирект"
+msgstr "Delete redirect"
+
+#: ext/r_urls_grid.js:104
+msgid "Вы уверены"
+msgstr "Are you sure"
+
+#: ext/r_urls_props.js:28
+msgid "Редирект"
+msgstr "Redirect"
+
+#: ext/r_urls_props.js:34
+msgid "со страницы"
+msgstr "from page"
+
+#: ext/r_urls_props.js:38
+msgid "на страницу"
+msgstr "to page"
+
+#: ext/r_urls_props.js:42
+msgid "код статуса"
+msgstr "status code"
+
+#: ext/r_urls_props.js:101
+msgid "Изменить редирект"
+msgstr "Change redirect"
+
+#: ext/r_urls_props.js:106
+msgid "Новый редирект"
+msgstr "New redirect"

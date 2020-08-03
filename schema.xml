@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<schema>
+
+<table name="r_list_plugin">
+    <field name="id" type="int(11)" null="0" auto_increment="1" />
+    <field name="url_from" type="varchar(255)" null="0" />
+    <field name="url_to" type="varchar(255)" null="0" />
+	<field name="r_code" type="varchar(3)" null="0" />
+    <key name="PRIMARY" unique="1">
+        <column name="id" />
+    </key>
+</table>
+
+<table name="r_options_plugin">
+	<field name="id" type="int(11)" null="0" auto_increment="1" />
+	<field name="ro_www" type="varchar(5)" null="0" />
+	<field name="ro_ss" type="varchar(5)" null="0" />
+	<field name="ro_ms" type="varchar(5)" null="0" />
+	<field name="ro_404" type="varchar(5)" null="0" />
+	<field name="ro_pc" type="varchar(10)" null="0" />
+    <key name="PRIMARY" unique="1">
+        <column name="id" />
+    </key>	
+</table> 
+
+</schema>
