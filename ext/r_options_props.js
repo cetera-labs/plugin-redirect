@@ -33,22 +33,26 @@ Ext.define('Plugin.redirect.r_options_props', {
                     {
                         fieldLabel: _('с www на без'),
                         name: 'ro_www',
-                        allowBlank: false
+                        allowBlank: false,
+                        uncheckedValue: 'off'
                     },
                     {
                         fieldLabel: _('с url без / на /'),
                         name: 'ro_ss',
-                        allowBlank: false
+                        allowBlank: false,
+                        uncheckedValue: 'off'
                     },
                     {
                         fieldLabel: _('с // на /'),
                         name: 'ro_ms',
-                        allowBlank: false
+                        allowBlank: false,
+                        uncheckedValue: 'off'
                     },
                     {
                         fieldLabel: _('с 404 на главную'),
                         name: 'ro_404',
-                        allowBlank: false
+                        allowBlank: false,
+                        uncheckedValue: 'off'
                     },
                     new Ext.form.ComboBox({
                         fieldLabel: _('с http <-> https'),
