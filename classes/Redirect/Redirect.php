@@ -24,6 +24,7 @@ final class Redirect
         $urlt = null;
         $r_sc = null;
         $urlwo = null;
+        $wwwre = 0;
 
         $toProtocol = $currentOptions[0]["ro_pc"];
         if ($toProtocol == "to_https" && $protocol == "http") {
@@ -38,8 +39,9 @@ final class Redirect
             && substr($_SERVER["SERVER_NAME"], 0, 4) == "www.") {
             $host = substr($_SERVER["SERVER_NAME"], 4);
             $urlwo = $currentUri;
+            $wwwre = 1;
         }
-        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on") {
+        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
             $changed = false;
             $u = parse_url($currentUri);
 
