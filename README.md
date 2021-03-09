@@ -2,7 +2,10 @@
 Позволяет настроить редиректы в интерфейсе Cetera CMS без использования файла .htaccess
 
 # Установка
-Добавить "composer require cetera-labs/plugin-redirect" в список плагинов composer.json репозитория проекта выполнить установку через композер
+Выполнить команду:
+```sh
+composer require phpmailer/phpmailer
+```
 
 # Инструкция по работе
 
