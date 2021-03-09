@@ -4,7 +4,7 @@
 # Установка
 Выполнить команду:
 ```sh
-composer require phpmailer/phpmailer
+composer require  cetera-labs/plugin-redirect
 ```
 
 # Инструкция по работе
