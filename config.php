@@ -10,7 +10,7 @@ if ( $this->getBo() && $this->getUser() && $this->getUser()->isAdmin() )
   	    'position' => MENU_SITE,
         'name' 	   => $t->_('Редиректы'),
         'icon'     => '/cms/plugins/redirect/images/icon.gif',
-        'iconCls'  => 'x-fa fa-directions'
+        'iconCls'  => 'x-fa fa-directions',
         'class'    => 'Plugin.redirect.Panel'
     ));
   
