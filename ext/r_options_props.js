@@ -48,6 +48,12 @@ Ext.define('Plugin.redirect.r_options_props', {
                         allowBlank: false,
                         uncheckedValue: 'off'
                     },
+					{
+                        fieldLabel: _('убрать /index/'),
+                        name: 'ro_remin',
+                        allowBlank: false,
+                        uncheckedValue: 'off'
+                    },
                     {
                         fieldLabel: _('с 404 на главную'),
                         name: 'ro_404',

@@ -14,12 +14,14 @@ if (!$r) {
 					  ro_www,
 					  ro_ss,
 					  ro_ms,
+					  ro_remin,
                       ro_404,
                       ro_pc
 				)
-				VALUES (?,?,?,?,?,?)',
+				VALUES (?,?,?,?,?,?,?)',
         array(
             1,
+            "",
             "",
             "",
             "",

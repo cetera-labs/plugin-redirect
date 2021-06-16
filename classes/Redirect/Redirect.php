@@ -59,6 +59,15 @@ final class Redirect
                     $changed = true;
                 }
             }
+			
+			if ($currentOptions[0]["ro_remin"] == "on") {
+				if (strpos($u["path"], "/index/") !== false) {
+					$u["path"] = preg_replace('/index/', "/", $u["path"]);
+					$u["path"] = preg_replace('{/+}s', "/", $u["path"]);
+					$changed = true;
+				}
+			}
+			
             if ($changed) {
                 $urlwo = $u["path"];
                 if (!empty($u["query"])) {
