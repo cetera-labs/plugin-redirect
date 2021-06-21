@@ -47,7 +47,7 @@ final class Redirect
 
             if ($currentOptions[0]["ro_ss"] == "on") {
                 $tmp = basename(rtrim($u["path"], "/"));
-                if (substr($u["path"], -1, 1) != "/" && substr($tmp, -4) != ".php" && substr($tmp, -4) != ".htm" && substr($tmp, -5) != ".html") {
+                if (substr($u["path"], -1, 1) != "/" && substr($tmp, -4) != ".php" && substr($tmp, -4) != ".htm" && substr($tmp, -5) != ".html" && substr($tmp, -4) != ".png" && substr($tmp, -4) != ".jpg" && substr($tmp, -5) != ".jpeg" && substr($tmp, -5) != ".webp" && substr($tmp, -4) != ".gif" && substr($tmp, -5) != ".webm" && substr($tmp, -4) != ".pdf" && substr($tmp, -4) != ".mp3" && substr($tmp, -4) != ".aac" && substr($tmp, -4) != ".bmp" && substr($tmp, -4) != ".txt" && substr($tmp, -4) != ".ico" && substr($tmp, -4) != ".xml" && substr($tmp, -3) != ".js" && substr($tmp, -5) != ".json" && substr($tmp, -5) != ".docx" && substr($tmp, -4) != ".doc") {
                     $u["path"] .= "/";
                     $changed = true;
                 }
