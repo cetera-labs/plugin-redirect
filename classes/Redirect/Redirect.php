@@ -37,10 +37,11 @@ final class Redirect
 
         if ($currentOptions[0]["ro_www"] == "on"
             && substr($_SERVER["SERVER_NAME"], 0, 4) == "www.") {
-            $host = substr($_SERVER["SERVER_NAME"], 4);
+            /*$host = substr($_SERVER["SERVER_NAME"], 4);
             $urlwo = $currentUri;
-            $wwwre = 1;
+            $wwwre = 1;*/
         }
+		
         if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
             $changed = false;
             $u = parse_url($currentUri);
