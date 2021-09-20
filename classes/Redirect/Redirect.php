@@ -37,11 +37,11 @@ final class Redirect
 
         if ($currentOptions[0]["ro_www"] == "on"
             && substr($_SERVER["SERVER_NAME"], 0, 4) == "www.") {
-            /* needs rework causes infinite redirect sometimes
+            /* needs rework causes infinite redirect sometimes*/
 			$host = substr($_SERVER["SERVER_NAME"], 4);
             $urlwo = $currentUri;
             $wwwre = 1;
-			*/
+			
         }
 		
         if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
@@ -78,7 +78,9 @@ final class Redirect
                 }
             }
             if (!empty($urlwo)) {
-                header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
+				if(strpos($_SERVER["SERVER_NAME"], 'www.') !== false){
+					header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
+				}
                 exit;
             }
         }
