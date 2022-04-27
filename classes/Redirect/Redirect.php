@@ -9,7 +9,7 @@ final class Redirect
         if (strtoupper($_SERVER['REQUEST_METHOD']) != "GET" && strtoupper($_SERVER['REQUEST_METHOD']) != "HEAD") {
             return;
         }
-        $host = $_SERVER["SERVER_NAME"];
+        $host = $_SERVER["HTTP_HOST"];
         $protocol = !empty($_SERVER["HTTPS"])
         && $_SERVER["HTTPS"] != "off" ? "https" : "http";
         $port = !empty($_SERVER["SERVER_PORT"])
