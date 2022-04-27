@@ -70,12 +70,16 @@ final class Redirect
 					$changed = true;
 				}
 				if (strpos($u["path"], "/index.html") !== false) {
-					$u["path"] = str_replace("/index.html", "/", $u["path"]);
-					$changed = true;
+					if (strpos($u["path"], "/cms/") !== true) {
+						$u["path"] = str_replace("/index.html", "/", $u["path"]);
+						$changed = true;
+					}
 				}
 				if (strpos($u["path"], "/index.php") !== false) {
-					$u["path"] = str_replace("/index.php", "/", $u["path"]);
-					$changed = true;
+					if (strpos($u["path"], "/cms/") !== true) {
+						$u["path"] = str_replace("/index.php", "/", $u["path"]);
+						$changed = true;
+					}
 				}
 			}
 			
