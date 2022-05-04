@@ -45,6 +45,14 @@ final class Redirect
 			}
 			
         }
+
+        if ($currentOptions[0]["ro_cetera"] === "on"
+            && $_SERVER["HTTP_HOST"] === "ru.ceteralabs.com") {
+            if (strpos($u["path"], "/cms/") !== true) {
+                header('Location: ' . $protocol . "://cetera.ru", true, 301);
+                exit;
+            }
+        }
 		
         if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
             $changed = false;

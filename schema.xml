@@ -18,6 +18,7 @@
 	<field name="ro_ms" type="varchar(5)" null="0" />
     <field name="ro_remin" type="varchar(5)" null="0" />
 	<field name="ro_404" type="varchar(5)" null="0" />
+    <field name="ro_cetera" type="varchar(5)" null="0" />
 	<field name="ro_pc" type="varchar(10)" null="0" />
     <key name="PRIMARY" unique="1">
         <column name="id" />

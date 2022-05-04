@@ -5,7 +5,7 @@ Ext.define('Plugin.redirect.r_options_props', {
     closeAction: 'hide',
     title: '',
     width: 650,
-    height: 283,
+    height: 333,
     layout: 'vbox',
     modal: true,
     resizable: false,
@@ -22,7 +22,7 @@ Ext.define('Plugin.redirect.r_options_props', {
             border: false,
             activeTab: 0,
             bodyStyle: 'background: none',
-            height: 220,
+            height: 333,
             defaults: {bodyStyle: 'background:none; padding:5px'},
             items: [{
                 title: _('Общие редиректы'),
@@ -57,6 +57,12 @@ Ext.define('Plugin.redirect.r_options_props', {
                     {
                         fieldLabel: _('с 404 на главную'),
                         name: 'ro_404',
+                        allowBlank: false,
+                        uncheckedValue: 'off'
+                    },
+                    {
+                        fieldLabel: _('ru.ceteralabs.com -> cetera.ru'),
+                        name: 'ro_cetera',
                         allowBlank: false,
                         uncheckedValue: 'off'
                     },
