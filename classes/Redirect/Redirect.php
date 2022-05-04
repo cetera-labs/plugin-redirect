@@ -100,10 +100,12 @@ final class Redirect
                 }
             }
             if (!empty($urlwo) || $wwwre == 1) {
-				if(strpos($_SERVER["SERVER_NAME"], 'www.') !== false){
-					header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
-				}
-                exit;
+                if (strpos($u["path"], "/cms/") !== true) {
+                    if(strpos($_SERVER["SERVER_NAME"], 'www.') !== false){
+                        header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
+                    }
+                    exit;
+                }
             }
         }
 
