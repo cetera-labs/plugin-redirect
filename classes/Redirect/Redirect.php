@@ -36,11 +36,13 @@ final class Redirect
         }
 
         if ($currentOptions[0]["ro_www"] == "on"
-            && substr($_SERVER["SERVER_NAME"], 0, 4) == "www.") {
+            && substr($_SERVER["HTTP_HOST"], 0, 4) == "www.") {
             /* needs rework causes infinite redirect sometimes*/
-			$host = substr($_SERVER["SERVER_NAME"], 4);
-            $urlwo = $currentUri;
-            $wwwre = 1;
+			if (strpos($u["path"], "/cms/") !== true) {
+				$host = substr($_SERVER["HTTP_HOST"], 4);
+				$urlwo = $currentUri;
+				$wwwre = 1;
+			}
 			
         }
 		
