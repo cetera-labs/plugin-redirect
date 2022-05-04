@@ -47,9 +47,9 @@ final class Redirect
 
         if ($currentOptions[0]["ro_www"] == "on"
             && substr($_SERVER["HTTP_HOST"], 0, 4) == "www.") {
-			//$host = substr($_SERVER["HTTP_HOST"], 4);
-			//$urlwo = $currentUri;
-			//$wwwre = 1;
+			$host = substr($_SERVER["HTTP_HOST"], 4);
+			$urlwo = $currentUri;
+			$wwwre = 1;
         }
 
         if ($currentOptions[0]["ro_cetera"] === "on"
