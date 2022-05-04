@@ -60,6 +60,12 @@ Ext.define('Plugin.redirect.r_options_props', {
                         allowBlank: false,
                         uncheckedValue: 'off'
                     },
+                    {
+                        fieldLabel: _('ru.ceteralabs.com -> cetera.ru'),
+                        name: 'ro_cetera',
+                        allowBlank: false,
+                        uncheckedValue: 'off'
+                    },
                     new Ext.form.ComboBox({
                         fieldLabel: _('с http <-> https'),
                         name: 'ro_pc',

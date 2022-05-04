@@ -7,7 +7,7 @@ Ext.define('Plugin.redirect.r_options_grid', {
         this.store = new Ext.data.JsonStore({
             autoDestroy: true,
             remoteSort: true,
-            fields: ['ro_www', 'ro_ss', 'ro_ms', 'ro_remin', 'ro_404', 'ro_pc'],
+            fields: ['ro_www', 'ro_ss', 'ro_ms', 'ro_remin', 'ro_404', 'ro_cetera', 'ro_pc'],
             sortInfo: {field: "ID", direction: "ASC"},
             proxy: {
                 type: 'ajax',
