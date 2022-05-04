@@ -99,7 +99,7 @@ final class Redirect
                     $urlwo .= "?" . $u["query"];
                 }
             }
-            if (!empty($urlwo)) {
+            if (!empty($urlwo) || $wwwre == 1) {
 				if(strpos($_SERVER["SERVER_NAME"], 'www.') !== false){
 					header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
 				}
