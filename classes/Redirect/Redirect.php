@@ -9,6 +9,15 @@ final class Redirect
         if (strtoupper($_SERVER['REQUEST_METHOD']) != "GET" && strtoupper($_SERVER['REQUEST_METHOD']) != "HEAD") {
             return;
         }
+		
+		if (strpos($_SERVER['REQUEST_URI'], "cms/") == true) {
+			return;
+		}
+		
+		if (strpos($_SERVER['REQUEST_URI'], "plugins/") == true) {
+			return;
+		}
+		
         $host = $_SERVER["HTTP_HOST"];
         $protocol = !empty($_SERVER["HTTPS"])
         && $_SERVER["HTTPS"] != "off" ? "https" : "http";
@@ -26,6 +35,7 @@ final class Redirect
         $urlwo = null;
         $wwwre = 0;
 
+
         $toProtocol = $currentOptions[0]["ro_pc"];
         if ($toProtocol == "to_https" && $protocol == "http") {
             $protocol = "https";
@@ -36,20 +46,16 @@ final class Redirect
         }
 
         if ($currentOptions[0]["ro_www"] == "on"
-            && substr($_SERVER["SERVER_NAME"], 0, 4) == "www.") {
-            /* needs rework causes infinite redirect sometimes
-			$host = substr($_SERVER["SERVER_NAME"], 4);
-            $urlwo = $currentUri;
-            $wwwre = 1;
-			*/
+            && substr($_SERVER["HTTP_HOST"], 0, 4) == "www.") {
+			//$host = substr($_SERVER["HTTP_HOST"], 4);
+			//$urlwo = $currentUri;
+			//$wwwre = 1;
         }
 
         if ($currentOptions[0]["ro_cetera"] === "on"
             && $_SERVER["HTTP_HOST"] === "ru.ceteralabs.com") {
-            if (strpos($u["path"], "/cms/") !== true) {
                 header('Location: ' . $protocol . "://cetera.ru", true, 301);
                 exit;
-            }
         }
 		
         if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
@@ -78,16 +84,12 @@ final class Redirect
 					$changed = true;
 				}
 				if (strpos($u["path"], "/index.html") !== false) {
-					if (strpos($u["path"], "/cms/") !== true) {
-						$u["path"] = str_replace("/index.html", "/", $u["path"]);
-						$changed = true;
-					}
+					$u["path"] = str_replace("/index.html", "/", $u["path"]);
+					$changed = true;
 				}
 				if (strpos($u["path"], "/index.php") !== false) {
-					if (strpos($u["path"], "/cms/") !== true) {
-						$u["path"] = str_replace("/index.php", "/", $u["path"]);
-						$changed = true;
-					}
+					$u["path"] = str_replace("/index.php", "/", $u["path"]);
+					$changed = true;
 				}
 			}
 			
@@ -97,9 +99,11 @@ final class Redirect
                     $urlwo .= "?" . $u["query"];
                 }
             }
-            if (!empty($urlwo)) {
-                header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
-                exit;
+            if (!empty($urlwo) || $wwwre == 1) {
+                if(strpos($_SERVER["SERVER_NAME"], 'www.') !== false){
+                    header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
+                }
+                 exit;
             }
         }
 
