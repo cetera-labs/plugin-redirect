@@ -9,7 +9,7 @@ final class Redirect
         if (strtoupper($_SERVER['REQUEST_METHOD']) != "GET" && strtoupper($_SERVER['REQUEST_METHOD']) != "HEAD") {
             return;
         }
-        $host = $_SERVER["SERVER_NAME"];
+        $host = $_SERVER["HTTP_HOST"];
         $protocol = !empty($_SERVER["HTTPS"])
         && $_SERVER["HTTPS"] != "off" ? "https" : "http";
         $port = !empty($_SERVER["SERVER_PORT"])
@@ -68,6 +68,18 @@ final class Redirect
 					$u["path"] = preg_replace('/index/', "/", $u["path"]);
 					$u["path"] = preg_replace('{/+}s', "/", $u["path"]);
 					$changed = true;
+				}
+				if (strpos($u["path"], "/index.html") !== false) {
+					if (strpos($u["path"], "/cms/") !== true) {
+						$u["path"] = str_replace("/index.html", "/", $u["path"]);
+						$changed = true;
+					}
+				}
+				if (strpos($u["path"], "/index.php") !== false) {
+					if (strpos($u["path"], "/cms/") !== true) {
+						$u["path"] = str_replace("/index.php", "/", $u["path"]);
+						$changed = true;
+					}
 				}
 			}
 			
