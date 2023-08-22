@@ -51,7 +51,12 @@ Ext.define('Plugin.redirect.r_urls_props', {
                         triggerAction: 'all',
                         editable: false,
                         allowBlank: false
-                    })
+                    }),
+                    {
+                        fieldLabel: _('домен'),
+                        name: 'r_domain',
+                        allowBlank: true
+                    }
                 ]
             }]
         });

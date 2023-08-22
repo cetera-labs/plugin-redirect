@@ -117,13 +117,28 @@ final class Redirect
             $urlf = $redirects[$row]["url_from"];
             $urlt = $redirects[$row]["url_to"];
             $r_sc = $redirects[$row]["r_code"];
-            if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
-                header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
-                exit;
-            } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
-                header('Location: ' . $urlt, true, $r_sc);
-                exit;
+            $r_domain = $redirects[$row]["r_domain"];
+            if (!$r_domain) {
+                if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
+                    header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
+                    exit;
+                } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
+                    header('Location: ' . $urlt, true, $r_sc);
+                    exit;
+                }
+            } else {
+                if ($r_domain == $host) {
+                    if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
+                        header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
+                        exit;
+                    } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
+                        header('Location: ' . $urlt, true, $r_sc);
+                        exit;
+                    }
+                }
+
             }
+
         }
     }
 }

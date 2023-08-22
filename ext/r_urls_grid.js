@@ -6,7 +6,8 @@ Ext.define('Plugin.redirect.r_urls_grid', {
         {header: "ID", width: 50, dataIndex: 'id'},
         {flex: 1, header: _('Редирект со страницы'), width: 450, dataIndex: 'url_from'},
         {flex: 1, header: _('Редирект на страницу'), width: 450, dataIndex: 'url_to'},
-        {header: _('Код'), width: 50, dataIndex: 'r_code'}
+        {header: _('Код'), width: 50, dataIndex: 'r_code'},
+        {header: _('Домен'), width: 150, dataIndex: 'r_domain'}
     ],
 
     selModel: {
@@ -28,7 +29,7 @@ Ext.define('Plugin.redirect.r_urls_grid', {
         this.store = new Ext.data.JsonStore({
             autoDestroy: true,
             remoteSort: true,
-            fields: ['url_from', 'url_to', 'r_code'],
+            fields: ['url_from', 'url_to', 'r_code', 'r_domain'],
             sortInfo: {field: "ID", direction: "ASC"},
             proxy: {
                 type: 'ajax',

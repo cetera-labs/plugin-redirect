@@ -6,6 +6,7 @@
     <field name="url_from" type="varchar(255)" null="0" />
     <field name="url_to" type="varchar(255)" null="0" />
 	<field name="r_code" type="varchar(3)" null="0" />
+	<field name="r_domain" type="varchar(255)" null="0" />
     <key name="PRIMARY" unique="1">
         <column name="id" />
     </key>
