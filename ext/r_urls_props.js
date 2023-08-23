@@ -5,7 +5,7 @@ Ext.define('Plugin.redirect.r_urls_props', {
     closeAction: 'hide',
     title: '',
     width: 650,
-    height: 183,
+    height: 223,
     layout: 'vbox',
     modal: true,
     resizable: false,
@@ -22,7 +22,7 @@ Ext.define('Plugin.redirect.r_urls_props', {
             border: false,
             activeTab: 0,
             bodyStyle: 'background: none',
-            height: 120,
+            height: 160,
             defaults: {bodyStyle: 'background:none; padding:5px'},
             items: [{
                 title: _('Редирект'),
