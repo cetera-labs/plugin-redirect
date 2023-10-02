@@ -113,6 +113,22 @@ final class Redirect
             }
         }
 
+        if ($currentOptions[0]["ro_lower"] == "on") {
+            $url = $_SERVER['REQUEST_URI'];
+            $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
+            $lowerUrl = strtolower($parsedUrl['path']);
+            if (array_key_exists('query',$parsedUrl)) {
+                $lowerUrl .= '?'.$parsedUrl['query'];
+            }
+
+            if (preg_match('/[A-Z]/', $url)) {
+                if ($lowerUrl !== $url) {
+                    header('Location: '.$lowerUrl, TRUE, 301);
+                    exit();
+                }
+            }
+        }
+
         foreach ($redirects as $row => $innerArray) {
             $urlf = $redirects[$row]["url_from"];
             $urlt = $redirects[$row]["url_to"];
