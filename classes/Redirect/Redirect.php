@@ -26,13 +26,18 @@ final class Redirect
          && $_SERVER["SERVER_PORT"] != "443" ?
              (":" . $_SERVER["SERVER_PORT"]) : "";
         /*$port = ":8080";*/
-        $currentUri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+        if (strpos($_SERVER["REQUEST_URI"], '//') === 0) {
+			$currentUri = parse_url("/".ltrim($_SERVER["REQUEST_URI"], '/'), PHP_URL_PATH);
+			$urlwo = $currentUri;
+		} else {
+			$currentUri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+			$urlwo = null;
+		}
         $currentOptions = include __DIR__ . "/../../r_options.php";
         $redirects = include __DIR__ . "/../../r_list_urls.php";
         $urlf = null;
         $urlt = null;
         $r_sc = null;
-        $urlwo = null;
         $wwwre = 0;
 
 
