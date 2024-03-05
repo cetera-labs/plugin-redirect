@@ -63,7 +63,7 @@ final class Redirect
                 exit;
         }
 		
-        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
+        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions[0]["ro_ms"] == "on" || $wwwre == 1) {
             $changed = false;
             $u = parse_url($currentUri);
 
