@@ -81,7 +81,7 @@ Ext.define('Plugin.redirect.r_options_props', {
 					{
                         fieldLabel: _('Alias по-умолчанию (moskva)'),
                         name: 'ro_defaultcity',
-						type: 'textfield',
+						xtype: 'textfield',
                         allowBlank: false,
                     },
                     new Ext.form.ComboBox({
