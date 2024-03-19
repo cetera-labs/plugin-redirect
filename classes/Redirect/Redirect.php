@@ -57,6 +57,29 @@ final class Redirect
 			$wwwre = 1;
         }
 
+        if ($currentOptions[0]["ro_enablecity"] === "on") {
+            $applicationR = \Cetera\Application::getInstance();
+            $conn = new \mysqli($applicationR->getVar('dbhost'), $applicationR->getVar('dbuser'),
+                $applicationR->getVar('dbpass'),
+                $applicationR->getVar('dbname'));
+            $arURL = explode('/', $_SERVER['REQUEST_URI']);
+            $sql = "SELECT alias FROM cities WHERE alias like '$arURL[1]'";
+            $result = $conn->query($sql);
+
+
+            $currentCityAlias = $currentOptions[0]["ro_defaultcity"];
+            while ($row = $result->fetch_assoc()) {
+                $currentCityAlias = $row['alias'];
+            }
+            echo "alias:" . $currentCityAlias;
+            $u = parse_url($currentUri);
+            if ($arURL[1] != $currentCityAlias) {
+                $u["path"] = '/' . $currentCityAlias . $u["path"];
+                header('Location: ' . $protocol . "://" . $host . $port . $u["path"], true, 301);
+                exit;
+            }
+        }
+
         if ($currentOptions[0]["ro_cetera"] === "on"
             && $_SERVER["HTTP_HOST"] === "ru.ceteralabs.com") {
                 header('Location: ' . $protocol . "://cetera.ru", true, 301);

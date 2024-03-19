@@ -5,7 +5,7 @@ Ext.define('Plugin.redirect.r_options_props', {
     closeAction: 'hide',
     title: '',
     width: 650,
-    height: 333,
+    height: 433,
     layout: 'vbox',
     modal: true,
     resizable: false,
@@ -22,7 +22,7 @@ Ext.define('Plugin.redirect.r_options_props', {
             border: false,
             activeTab: 0,
             bodyStyle: 'background: none',
-            height: 333,
+            height: 433,
             defaults: {bodyStyle: 'background:none; padding:5px'},
             items: [{
                 title: _('Общие редиректы'),
@@ -71,6 +71,18 @@ Ext.define('Plugin.redirect.r_options_props', {
                         name: 'ro_cetera',
                         allowBlank: false,
                         uncheckedValue: 'off'
+                    },
+					{
+                        fieldLabel: _('Редирект для плагина городов'),
+                        name: 'ro_enablecity',
+                        allowBlank: false,
+                        uncheckedValue: 'off'
+                    },
+					{
+                        fieldLabel: _('Alias по-умолчанию (moskva)'),
+                        name: 'ro_defaultcity',
+						type: 'textfield',
+                        allowBlank: false,
                     },
                     new Ext.form.ComboBox({
                         fieldLabel: _('с http <-> https'),
