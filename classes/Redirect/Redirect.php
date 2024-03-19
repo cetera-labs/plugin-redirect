@@ -71,7 +71,6 @@ final class Redirect
             while ($row = $result->fetch_assoc()) {
                 $currentCityAlias = $row['alias'];
             }
-            echo "alias:" . $currentCityAlias;
             $u = parse_url($currentUri);
             if ($arURL[1] != $currentCityAlias) {
                 $u["path"] = '/' . $currentCityAlias . $u["path"];
