@@ -26,13 +26,18 @@ final class Redirect
          && $_SERVER["SERVER_PORT"] != "443" ?
              (":" . $_SERVER["SERVER_PORT"]) : "";
         /*$port = ":8080";*/
-        $currentUri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+        if (strpos($_SERVER["REQUEST_URI"], '//') === 0) {
+			$currentUri = parse_url("/".ltrim($_SERVER["REQUEST_URI"], '/'), PHP_URL_PATH);
+			$urlwo = $currentUri;
+		} else {
+			$currentUri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+			$urlwo = null;
+		}
         $currentOptions = include __DIR__ . "/../../r_options.php";
         $redirects = include __DIR__ . "/../../r_list_urls.php";
         $urlf = null;
         $urlt = null;
         $r_sc = null;
-        $urlwo = null;
         $wwwre = 0;
 
 
@@ -58,7 +63,7 @@ final class Redirect
                 exit;
         }
 		
-        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions["ro_ms"] == "on" || $wwwre == 1) {
+        if ($currentOptions[0]["ro_ss"] == "on" || $currentOptions[0]["ro_ms"] == "on" || $wwwre == 1) {
             $changed = false;
             $u = parse_url($currentUri);
 
@@ -99,11 +104,10 @@ final class Redirect
                     $urlwo .= "?" . $u["query"];
                 }
             }
+			
             if (!empty($urlwo) || $wwwre == 1) {
-                if(strpos($_SERVER["SERVER_NAME"], 'www.') !== false){
-                    header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
-                }
-                 exit;
+                header('Location: ' . $protocol . "://" . $host . $port . $urlwo, true, 301);
+                exit;
             }
         }
 
@@ -114,17 +118,48 @@ final class Redirect
             }
         }
 
+        if ($currentOptions[0]["ro_lower"] == "on") {
+            $url = $_SERVER['REQUEST_URI'];
+            $parsedUrl = parse_url($_SERVER['REQUEST_URI']);
+            $lowerUrl = strtolower($parsedUrl['path']);
+            if (array_key_exists('query',$parsedUrl)) {
+                $lowerUrl .= '?'.$parsedUrl['query'];
+            }
+
+            if (preg_match('/[A-Z]/', $url)) {
+                if ($lowerUrl !== $url) {
+                    header('Location: '.$lowerUrl, TRUE, 301);
+                    exit();
+                }
+            }
+        }
+
         foreach ($redirects as $row => $innerArray) {
             $urlf = $redirects[$row]["url_from"];
             $urlt = $redirects[$row]["url_to"];
             $r_sc = $redirects[$row]["r_code"];
-            if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
-                header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
-                exit;
-            } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
-                header('Location: ' . $urlt, true, $r_sc);
-                exit;
+            $r_domain = $redirects[$row]["r_domain"];
+            if (!$r_domain) {
+                if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
+                    header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
+                    exit;
+                } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
+                    header('Location: ' . $urlt, true, $r_sc);
+                    exit;
+                }
+            } else {
+                if ($r_domain == $host) {
+                    if ($urlf == $currentUri && substr($urlt, 0, 4) != "http") {
+                        header('Location: ' . $protocol . "://" . $host . $port . $urlt, true, $r_sc);
+                        exit;
+                    } else if ($urlf == $currentUri && substr($urlt, 0, 4) == "http") {
+                        header('Location: ' . $urlt, true, $r_sc);
+                        exit;
+                    }
+                }
+
             }
+
         }
     }
 }

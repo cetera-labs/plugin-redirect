@@ -16,12 +16,14 @@ if (!$r) {
 					  ro_ms,
 					  ro_remin,
                       ro_404,
+				      ro_lower,
                       ro_cetera,
                       ro_pc
 				)
-				VALUES (?,?,?,?,?,?,?,?)',
+				VALUES (?,?,?,?,?,?,?,?,?)',
         array(
             1,
+            "",
             "",
             "",
             "",

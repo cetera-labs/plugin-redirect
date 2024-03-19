@@ -6,6 +6,7 @@
     <field name="url_from" type="varchar(255)" null="0" />
     <field name="url_to" type="varchar(255)" null="0" />
 	<field name="r_code" type="varchar(3)" null="0" />
+	<field name="r_domain" type="varchar(255)" null="0" />
     <key name="PRIMARY" unique="1">
         <column name="id" />
     </key>
@@ -18,6 +19,7 @@
 	<field name="ro_ms" type="varchar(5)" null="0" />
     <field name="ro_remin" type="varchar(5)" null="0" />
 	<field name="ro_404" type="varchar(5)" null="0" />
+    <field name="ro_lower" type="varchar(5)" null="0" />
     <field name="ro_cetera" type="varchar(5)" null="0" />
 	<field name="ro_pc" type="varchar(10)" null="0" />
     <key name="PRIMARY" unique="1">

@@ -19,12 +19,12 @@ if ($action == 'delete_redirect') {
 
 if ($action == 'save_redirect') {
 
-	$query = 'r_list_plugin SET url_from=?, url_to=?, r_code=?';
+	$query = 'r_list_plugin SET url_from=?, url_to=?, r_code=?, r_domain=?';
         
     if ($id) $query = 'UPDATE '.$query.' WHERE id='.$id;
         else $query = 'INSERT INTO '.$query;
     
-    $application->getConn()->executeQuery($query, array($_POST['url_from'],$_POST['url_to'],$_POST['r_code']));
+    $application->getConn()->executeQuery($query, array($_POST['url_from'],$_POST['url_to'],$_POST['r_code'],$_POST['r_domain']));
     if (!$id) $id = $application->getConn()->lastInsertId();
             
     $res['success'] = true;

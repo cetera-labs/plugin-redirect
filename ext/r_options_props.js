@@ -61,6 +61,12 @@ Ext.define('Plugin.redirect.r_options_props', {
                         uncheckedValue: 'off'
                     },
                     {
+                        fieldLabel: _('на нижний регистр'),
+                        name: 'ro_lower',
+                        allowBlank: false,
+                        uncheckedValue: 'off'
+                    },
+                    {
                         fieldLabel: _('ru.ceteralabs.com -> cetera.ru'),
                         name: 'ro_cetera',
                         allowBlank: false,
