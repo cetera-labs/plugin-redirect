@@ -65,6 +65,8 @@ final class Redirect
             $arURL = explode('/', $_SERVER['REQUEST_URI']);
             $sql = "SELECT alias FROM cities WHERE alias like '$arURL[1]'";
             $result = $conn->query($sql);
+			$conn->close();
+			unset($applicationR);
 
 
             $currentCityAlias = $currentOptions[0]["ro_defaultcity"];
