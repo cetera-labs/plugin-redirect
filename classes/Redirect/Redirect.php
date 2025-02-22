@@ -10,11 +10,11 @@ final class Redirect
             return;
         }
 		
-		if (strpos($_SERVER['REQUEST_URI'], "cms/") == true) {
+		if (strpos($_SERVER['REQUEST_URI'], "/cms/") === 0) {
 			return;
 		}
 		
-		if (strpos($_SERVER['REQUEST_URI'], "plugins/") == true) {
+		if (strpos($_SERVER['REQUEST_URI'], "/plugins/") === 0) {
 			return;
 		}
 		
