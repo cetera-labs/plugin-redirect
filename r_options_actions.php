@@ -12,12 +12,12 @@ $id = (int)$_POST['id'];
 
 if ($action == 'save_r_options') {
 
-    $query = 'r_options_plugin SET ro_www=?, ro_ss=?, ro_ms=?, ro_remin=?, ro_404=?, ro_lower=?, ro_cetera=?, ro_pc=?';
+    $query = 'r_options_plugin SET ro_www=?, ro_ss=?, ro_ms=?, ro_remin=?, ro_404=?, ro_lower=?, ro_cetera=?, ro_pc=?, ro_enablecity=?, ro_defaultcity=?';
 
     if ($id) $query = 'REPLACE INTO ' . $query . ', id=' . $id;
     else $query = 'INSERT INTO ' . $query;
 
-    $application->getConn()->executeQuery($query, array($_POST['ro_www'], $_POST['ro_ss'], $_POST['ro_ms'], $_POST['ro_remin'], $_POST['ro_404'], $_POST['ro_lower'], $_POST['ro_cetera'], $_POST['ro_pc']));
+    $application->getConn()->executeQuery($query, array($_POST['ro_www'], $_POST['ro_ss'], $_POST['ro_ms'], $_POST['ro_remin'], $_POST['ro_404'], $_POST['ro_lower'], $_POST['ro_cetera'], $_POST['ro_pc'], $_POST['ro_enablecity'], $_POST['ro_defaultcity']));
     if (!$id) $id = $application->getConn()->lastInsertId();
 
     $res['success'] = true;

@@ -22,6 +22,8 @@
     <field name="ro_lower" type="varchar(5)" null="0" />
     <field name="ro_cetera" type="varchar(5)" null="0" />
 	<field name="ro_pc" type="varchar(10)" null="0" />
+	<field name="ro_enablecity" type="varchar(5)" null="0" />
+	<field name="ro_defaultcity" type="varchar(255)" null="0" />
     <key name="PRIMARY" unique="1">
         <column name="id" />
     </key>	

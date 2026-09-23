@@ -18,9 +18,11 @@ if (!$r) {
                       ro_404,
 				      ro_lower,
                       ro_cetera,
-                      ro_pc
+                      ro_pc,
+					  ro_enablecity,
+					  ro_defaultcity
 				)
-				VALUES (?,?,?,?,?,?,?,?,?)',
+				VALUES (?,?,?,?,?,?,?,?,?,?,?)',
         array(
             1,
             "",
@@ -30,6 +32,8 @@ if (!$r) {
             "",
             "",
             "",
+			"",
+			"",
             "off"
         )
     );
